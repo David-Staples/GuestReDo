@@ -4,7 +4,7 @@ import androidx.room.*
 
 @Entity(tableName = "my_guests")
 data class GuestEntity(
-    @PrimaryKey(autoGenerate = true) var primaryKey: int?,
+    @PrimaryKey(autoGenerate = true) var primaryKey: Int?,
     @ColumnInfo(name = "guest_name") var guestName: String,
     @ColumnInfo(name = "guest_relationship") var guestRelationship: String
 ) {

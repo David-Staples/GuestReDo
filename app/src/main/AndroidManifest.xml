@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.QueryFragmaent"></activity>
+        <activity android:name=".view.recycler_view"></activity>
+        <activity android:name=".view.QueryFragmaent" />
         <activity android:name=".view.InsertFragment" />
         <activity android:name=".view.MainActivity">
             <intent-filter>

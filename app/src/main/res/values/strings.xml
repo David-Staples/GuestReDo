@@ -2,4 +2,6 @@
     <string name="app_name">GuestReDo</string>
     <string name="show_guest_list">Show Guest List</string>
     <string name="add_guest">Add Guest</string>
+    <string name="guest_name">Guest Name</string>
+    <string name="relationship">Relationship</string>
 </resources>
