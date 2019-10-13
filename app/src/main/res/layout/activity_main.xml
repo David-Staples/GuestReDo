@@ -6,15 +6,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".view.MainActivity">
-    <!--
+
         <FrameLayout
-            android:id="@+id/insertFrameLayout"
+            android:id="@+id/listFrameLayout"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:elevation="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            app:layout_constraintTop_toBottomOf="@id/guestListButton"
+            app:layout_constraintBottom_toTopOf="@id/clearButtonview"
+            />
+<!--
         <FrameLayout
             android:id="@+id/queryFrameLayout"
             android:layout_width="0dp"
@@ -26,21 +29,22 @@
 
     <Button
         android:id="@+id/clearButtonview"
-        android:layout_width="84dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/clear_list"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.829"
-        app:layout_constraintStart_toEndOf="@+id/guestListButton"
-        app:layout_constraintTop_toBottomOf="@+id/relationshipEditTextview" />
+        app:layout_constraintTop_toBottomOf="@id/listFrameLayout"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/relationshipEditTextview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:text="@string/relationship"
+        android:hint="@string/relationship"
+        app:layout_constraintBottom_toTopOf="@id/listFrameLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameEditTextview" />
 
@@ -49,9 +53,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:text="@string/guest_name"
+        android:hint="@string/guest_name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintBottom_toTopOf="@id/relationshipEditTextview"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -63,13 +67,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relationshipEditTextview" />
 
-    <TextView
-        android:id="@+id/show_guests"
-        android:layout_width="415dp"
-        android:layout_height="398dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+
 
     <Button
         android:id="@+id/guestListButton"

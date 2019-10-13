@@ -15,9 +15,12 @@ import com.example.guestredo.R
 import com.example.guestredo.database.GuestDatabase
 import com.example.guestredo.database.GuestEntity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_guest_list_layout.*
 import java.lang.StringBuilder
 
-class MainActivity : AppCompatActivity(), FragmentGuestListListener {
+const val GUESTS_KEY = "guests_key"
+
+class MainActivity : AppCompatActivity() {
 
     private val fragmentGuestList = FragmentGuestList()
 
@@ -29,6 +32,7 @@ class MainActivity : AppCompatActivity(), FragmentGuestListListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        setupViews()
 //        setUpRecyclerView()
 //
 //        fun toRecycler (view: View) {
@@ -43,35 +47,53 @@ class MainActivity : AppCompatActivity(), FragmentGuestListListener {
 //
 //            }
 
-    //    }
+        //    }
+    }
 
+    fun goToGuestList(guests: String) {
+        fragmentGuestList.arguments = Bundle().apply {
+            putString(GUESTS_KEY, guests)
+        }
+        supportFragmentManager.beginTransaction()
+            .add(R.id.listFrameLayout, fragmentGuestList)
+            .commit()
+
+    }
+
+    private fun setupViews() {
         myDAO = Room.databaseBuilder(
             this,
-            GuestDatabase::class.java,
-            "guest.db")
+            GuestDatabase::
+            class.java,
+            "guest.db"
+        )
             .allowMainThreadQueries()
             .build()
 
 
 
-        addGuestButtonview.setOnClickListener {
+        addGuestButtonview.setOnClickListener{
             var myGuest = nameEditTextview.text.toString()
             var myRelationship = relationshipEditTextview.text.toString()
             var guestEntity = GuestEntity(myGuest, myRelationship)
             myDAO.guestDAO().insertGuest(guestEntity)
         }
 
+
+
         guestListButton.setOnClickListener{
-//            var guestList = myDAO.guestDAO().getAllGuests().toString()
-//            show_guests.text = gList
-          //  toRecycler()
+            var guestList = myDAO.guestDAO().getAllGuests().toString()
+            goToGuestList(guestList)
+
+            //  toRecycler()
         }
+
 
         clearButtonview.setOnClickListener{
             myDAO.guestDAO().clear()
         }
-    }
 
+        }
 }
 
 
